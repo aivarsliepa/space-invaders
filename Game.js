@@ -8,28 +8,23 @@ class Game {
     /** @type {Bullet[]} */
     this.playerBullets = [];
 
-    /** @type {Enemy[]} */
-    this.enemies = [];
+    this.enemyCollection = new EnemyCollection(this);
 
     this.gameOver = false;
-
-    for (let i = 0; i < width; i += Enemy.r * 3) {
-      this.enemies.push(new Enemy(i, this));
-    }
   }
 
   draw() {
     this.player.draw();
     this.playerBullets.forEach(drawObject);
     this.enemyBullets.forEach(drawObject);
-    this.enemies.forEach(drawObject);
+    this.enemyCollection.draw();
   }
 
   update() {
     this.player.update();
     this.playerBullets.forEach(updateObject);
     this.enemyBullets.forEach(updateObject);
-    this.enemies.forEach(updateObject);
+    this.enemyCollection.update();
   }
 
   createEnemyBullet(x, y) {
@@ -48,6 +43,6 @@ class Game {
   }
 
   removeEnemy(enemy) {
-    this.enemies = this.enemies.filter(e => e !== enemy);
+    this.enemyCollection.removeEnemy(enemy);
   }
 }

@@ -4,13 +4,10 @@ class Enemy {
    *
    * @param {Game} game
    */
-  constructor(x, game) {
+  constructor(x, y, game) {
     this.game = game;
     this.x = x;
-    this.y = 0 + 2 * Enemy.r;
-    this.initialSpeed = width / (10 * FRAME_RATE);
-    this.speed = this.initialSpeed;
-    this.moveRight = true;
+    this.y = y;
   }
 
   draw() {
@@ -19,26 +16,12 @@ class Enemy {
   }
 
   update() {
-    if (this.moveRight) {
-      this.x += this.speed;
-    } else {
-      this.x -= this.speed;
-    }
-
-    if (this.x < 0) {
-      this.moveRight = true;
-      this.y += Enemy.r * 3;
-      this.speed += this.initialSpeed;
-    } else if (this.x > width) {
-      this.moveRight = false;
-      this.y += Enemy.r * 2;
-    }
-
     this.game.playerBullets.forEach(bullet => this.checkCollision(bullet));
 
-    if (random(1) < 0.01) {
-      this.shoot();
-    }
+    // TODO add shooting chance
+    // if (random(1) < 0.01) {
+    //   this.shoot();
+    // }
 
     if (this.y > height) {
       this.game.gameOver = true;
