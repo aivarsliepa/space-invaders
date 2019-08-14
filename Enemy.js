@@ -1,5 +1,5 @@
 class Enemy {
-  static r = 15;
+  static r = 8;
   /**
    * @param {Game} game
    */
@@ -17,7 +17,7 @@ class Enemy {
     //   this.shoot();
     // }
 
-    if (this.y > this.game.size) {
+    if (this.y > Game.size) {
       this.game.gameOver = true;
     }
   }

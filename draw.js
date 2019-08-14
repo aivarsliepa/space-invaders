@@ -28,7 +28,7 @@ function drawGame(game) {
  */
 function drawBullet(bullet) {
   fill("#fff");
-  circle(bullet.x, bullet.y, Bullet.r * 2);
+  circle(mapCoord(bullet.x), mapCoord(bullet.y), mapCoord(Bullet.r * 2));
 }
 
 /**
@@ -36,7 +36,7 @@ function drawBullet(bullet) {
  */
 function drawPlayer(player) {
   fill("#193314");
-  circle(player.x, player.y, Player.r * 2);
+  circle(mapCoord(player.x), mapCoord(player.y), mapCoord(Player.r * 2));
 }
 
 /**
@@ -51,5 +51,9 @@ function drawEnemyCollection(collection) {
  */
 function drawEnemy(enemy) {
   fill("#a7db18");
-  circle(enemy.x, enemy.y, Enemy.r * 2);
+  circle(mapCoord(enemy.x), mapCoord(enemy.y), mapCoord(Enemy.r * 2));
+}
+
+function mapCoord(val) {
+  return map(val, 1, Game.size, 0, width);
 }

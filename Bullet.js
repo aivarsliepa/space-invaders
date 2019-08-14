@@ -1,11 +1,11 @@
 class Bullet {
-  static r = 5;
+  static r = 2;
   constructor(isHostile, x, y, game) {
     this.game = game;
     this.isHostile = isHostile;
     this.x = x;
     this.y = y;
-    this.speed = this.game.size / (4 * FRAME_RATE);
+    this.speed = Game.size / (4 * FRAME_RATE);
   }
 
   update() {
@@ -15,7 +15,7 @@ class Bullet {
       this.y -= this.speed;
     }
 
-    if (this.y < 0 || this.y > this.game.size) {
+    if (this.y < 0 || this.y > Game.size) {
       this.remove();
     }
   }

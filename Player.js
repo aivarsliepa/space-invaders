@@ -1,14 +1,14 @@
 class Player {
-  static r = 20;
+  static r = 8;
   /**
    *
    * @param {Game} game
    */
   constructor(game) {
     this.game = game;
-    this.x = this.game.size / 2 - Player.r;
-    this.y = this.game.size - Player.r;
-    this.speed = this.game.size / (3 * FRAME_RATE);
+    this.x = Game.size / 2 - Player.r;
+    this.y = Game.size - Player.r;
+    this.speed = Game.size / (3 * FRAME_RATE);
   }
 
   update() {
