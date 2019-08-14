@@ -5,7 +5,7 @@ class Bullet {
     this.isHostile = isHostile;
     this.x = x;
     this.y = y;
-    this.speed = height / (4 * FRAME_RATE);
+    this.speed = this.game.size / (4 * FRAME_RATE);
   }
 
   update() {
@@ -15,14 +15,9 @@ class Bullet {
       this.y -= this.speed;
     }
 
-    if (this.y < 0 || this.y > height) {
+    if (this.y < 0 || this.y > this.game.size) {
       this.remove();
     }
-  }
-
-  draw() {
-    fill("#fff");
-    circle(this.x, this.y, Bullet.r * 2);
   }
 
   remove() {

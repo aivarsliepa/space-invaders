@@ -1,18 +1,12 @@
 class Enemy {
   static r = 15;
   /**
-   *
    * @param {Game} game
    */
   constructor(x, y, game) {
     this.game = game;
     this.x = x;
     this.y = y;
-  }
-
-  draw() {
-    fill("#a7db18");
-    circle(this.x, this.y, Enemy.r * 2);
   }
 
   update() {
@@ -23,7 +17,7 @@ class Enemy {
     //   this.shoot();
     // }
 
-    if (this.y > height) {
+    if (this.y > this.game.size) {
       this.game.gameOver = true;
     }
   }

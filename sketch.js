@@ -6,23 +6,10 @@ const FRAME_RATE = 60;
 
 function setup() {
   frameRate(FRAME_RATE);
-  createCanvas(800, 768).parent("sketch-container");
+  // original display was 224 x 256 -> upscaled 3 times = 672 x 768
+  // for now use 672x672 and leave the rest for score, lives, etc
+  createCanvas(672, 672).parent("sketch-container");
   setupGame();
-}
-
-function draw() {
-  background(55);
-  game.update();
-  game.draw();
-
-  keyIsDownEvents();
-
-  if (game.gameOver) {
-    textSize(40);
-    textAlign(CENTER);
-    text("Game Over", width / 2, height / 2);
-    noLoop();
-  }
 }
 
 function setupGame() {

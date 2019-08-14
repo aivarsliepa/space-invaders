@@ -6,14 +6,9 @@ class Player {
    */
   constructor(game) {
     this.game = game;
-    this.x = width / 2 - Player.r;
-    this.y = height - Player.r;
-    this.speed = width / (3 * FRAME_RATE);
-  }
-
-  draw() {
-    fill("#193314");
-    circle(this.x, this.y, Player.r * 2);
+    this.x = this.game.size / 2 - Player.r;
+    this.y = this.game.size - Player.r;
+    this.speed = this.game.size / (3 * FRAME_RATE);
   }
 
   update() {

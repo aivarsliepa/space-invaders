@@ -1,5 +1,7 @@
 class Game {
   constructor() {
+    // screen width of original game, base all coords based on 224x224 grid
+    this.size = 224;
     this.player = new Player(this);
 
     /** @type {Bullet[]} */
@@ -11,13 +13,6 @@ class Game {
     this.enemyCollection = new EnemyCollection(this);
 
     this.gameOver = false;
-  }
-
-  draw() {
-    this.player.draw();
-    this.playerBullets.forEach(drawObject);
-    this.enemyBullets.forEach(drawObject);
-    this.enemyCollection.draw();
   }
 
   update() {

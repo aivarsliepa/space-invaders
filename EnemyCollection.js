@@ -3,10 +3,11 @@ class EnemyCollection {
    * @param {Game} game
    */
   constructor(game) {
+    this.game = game;
     /** @type {Enemy[][]} */
     this.enemies = [];
 
-    this.initialSpeed = width / (10 * FRAME_RATE);
+    this.initialSpeed = this.game.size / (10 * FRAME_RATE);
     this.speed = this.initialSpeed;
     this.moveRight = true;
     this.timesScreenCrossed = 0;
@@ -24,7 +25,7 @@ class EnemyCollection {
     let changeDirection = false;
 
     this.forEachEnemy(enemy => {
-      if (enemy.x < 0 || enemy.x > width) {
+      if (enemy.x < 0 || enemy.x > this.game.size) {
         changeDirection = true;
       }
     });
@@ -53,10 +54,6 @@ class EnemyCollection {
     });
 
     this.forEachEnemy(updateObject);
-  }
-
-  draw() {
-    this.forEachEnemy(drawObject);
   }
 
   removeEnemy(enemy) {
