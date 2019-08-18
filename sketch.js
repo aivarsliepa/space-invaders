@@ -2,10 +2,9 @@
  * @type {Game}
  */
 let game;
-const FRAME_RATE = 60;
 
 function setup() {
-  frameRate(FRAME_RATE);
+  frameRate(60);
   // original display was 224 x 256 -> upscaled 3 times = 672 x 768
   // for now use 672x672 and leave the rest for score, lives, etc
   createCanvas(672, 672).parent("sketch-container");

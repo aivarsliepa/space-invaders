@@ -1,5 +1,6 @@
 class Enemy {
-  static r = 8;
+  static width = 12;
+  static height = 8;
   /**
    * @param {Game} game
    */
@@ -12,25 +13,26 @@ class Enemy {
   update() {
     this.game.playerBullets.forEach(bullet => this.checkCollision(bullet));
 
-    // TODO add shooting chance
-    // if (random(1) < 0.01) {
-    //   this.shoot();
-    // }
-
     if (this.y > Game.size) {
       this.game.gameOver = true;
     }
   }
 
   checkCollision(bullet) {
-    if (distance(bullet, this) <= Bullet.r + Enemy.r) {
-      this.remove();
-      bullet.remove();
+    if (this.y + Enemy.height < bullet.y || bullet.y + Bullet.height < this.y) {
+      return;
     }
+
+    if (this.x + Enemy.width < bullet.x || bullet.x + Bullet.width < this.x) {
+      return;
+    }
+
+    this.remove();
+    bullet.remove();
   }
 
   shoot() {
-    this.game.createEnemyBullet(this.x, this.y + Enemy.r + Bullet.r);
+    this.game.createEnemyBullet(this.x + Enemy.width / 2 - Bullet.width / 2, this.y + Enemy.height);
   }
 
   remove() {

@@ -4,6 +4,11 @@ Work in progress
 
 ### TODO
 
+- rework enemy movement to be more like original -> increases relative to number of enemies left on board
 - rework a bit how bullets work, maybe seperate classes for enemy & player bullet (with common parent class)
 - enemies should shoot
-- maybe custom grid? (would help to replicate pixel graphics and easier to serialize game state for NN)
+- defensive blocks
+- score
+- levels
+- multiple types of enemies
+- motherboard

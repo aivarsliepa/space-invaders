@@ -1,4 +1,8 @@
 class EnemyCollection {
+  static xGap = 4;
+  static yGap = 4;
+  static rowCount = 5;
+  static columnCount = 11;
   /**
    * @param {Game} game
    */
@@ -8,17 +12,19 @@ class EnemyCollection {
     this.enemies = [];
 
     // TODO change based on turns/cycles (so that enemies can stay still for brief moments)
-    this.initialSpeed = 0.25;
+    this.initialSpeed = 0.2;
     this.speed = this.initialSpeed;
     this.moveRight = true;
     this.timesScreenCrossed = 0;
 
     // 5 rows, 11 columns
-    for (let i = 1; i < 12; i++) {
+    for (let i = 1; i < EnemyCollection.columnCount + 1; i++) {
       const enemyRow = [];
       this.enemies.push(enemyRow);
-      for (let j = 1; j < 6; j++) {
-        enemyRow.push(new Enemy(i * 2 * Enemy.r, j * 2 * Enemy.r, game));
+      for (let j = 1; j <= EnemyCollection.rowCount; j++) {
+        enemyRow.push(
+          new Enemy(i * (Enemy.width + EnemyCollection.xGap), j * (Enemy.height + EnemyCollection.yGap), game)
+        );
       }
     }
   }
@@ -27,7 +33,7 @@ class EnemyCollection {
     let changeDirection = false;
 
     this.forEachEnemy(enemy => {
-      if (enemy.x < 0 || enemy.x > Game.size) {
+      if (enemy.x < 0 || enemy.x + Enemy.width > Game.size) {
         changeDirection = true;
       }
     });
@@ -50,7 +56,7 @@ class EnemyCollection {
 
       if (changeDirection) {
         if (this.timesScreenCrossed % 2 === 0) {
-          enemy.y += Enemy.r * 3;
+          enemy.y += Enemy.height;
         }
       }
     });

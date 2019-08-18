@@ -1,14 +1,15 @@
 class Player {
-  static r = 8;
+  static width = 16;
+  static height = 8;
   /**
    *
    * @param {Game} game
    */
   constructor(game) {
     this.game = game;
-    this.x = Game.size / 2 - Player.r;
-    this.y = Game.size - Player.r;
-    this.speed = Game.size / (3 * FRAME_RATE);
+    this.x = Game.size / 2 - Player.width;
+    this.y = Game.size - Player.height;
+    this.speed = Game.size / 100;
   }
 
   update() {
@@ -16,14 +17,14 @@ class Player {
   }
 
   moveLeft() {
-    this.x -= this.speed;
+    this.x = Math.max(this.x - this.speed, 0);
   }
 
   moveRight() {
-    this.x += this.speed;
+    this.x = Math.min(this.x + this.speed, Game.size - Player.width);
   }
 
   shoot() {
-    this.game.createPlayerBullet(this.x, this.y);
+    this.game.createPlayerBullet(this.x + Player.width / 2 - Bullet.width / 2, this.y);
   }
 }

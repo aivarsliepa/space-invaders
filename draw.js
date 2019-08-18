@@ -1,6 +1,8 @@
 function draw() {
   background(55);
+  // const start = performance.now();
   game.update();
+  // console.log(performance.now() - start);
   drawGame(game);
 
   keyIsDownEvents();
@@ -28,7 +30,7 @@ function drawGame(game) {
  */
 function drawBullet(bullet) {
   fill("#fff");
-  circle(mapCoord(bullet.x), mapCoord(bullet.y), mapCoord(Bullet.r * 2));
+  rect(mapCoord(bullet.x), mapCoord(bullet.y), mapCoord(Bullet.width), mapCoord(Bullet.height));
 }
 
 /**
@@ -36,7 +38,7 @@ function drawBullet(bullet) {
  */
 function drawPlayer(player) {
   fill("#193314");
-  circle(mapCoord(player.x), mapCoord(player.y), mapCoord(Player.r * 2));
+  rect(mapCoord(player.x), mapCoord(player.y), mapCoord(Player.width), mapCoord(Player.height));
 }
 
 /**
@@ -51,7 +53,7 @@ function drawEnemyCollection(collection) {
  */
 function drawEnemy(enemy) {
   fill("#a7db18");
-  circle(mapCoord(enemy.x), mapCoord(enemy.y), mapCoord(Enemy.r * 2));
+  rect(mapCoord(enemy.x), mapCoord(enemy.y), mapCoord(Enemy.width), mapCoord(Enemy.height));
 }
 
 function mapCoord(val) {

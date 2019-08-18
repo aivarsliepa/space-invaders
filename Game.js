@@ -1,6 +1,7 @@
 class Game {
   // screen width of original game, base all coords based on 224x224 grid
   static size = 224;
+  static maxPlayerBullets = 1;
   constructor() {
     this.player = new Player(this);
 
@@ -27,7 +28,7 @@ class Game {
   }
 
   createPlayerBullet(x, y) {
-    if (this.playerBullets.length < 2) {
+    if (this.playerBullets.length < Game.maxPlayerBullets) {
       this.playerBullets.push(new Bullet(false, x, y, this));
     }
   }
