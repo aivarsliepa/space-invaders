@@ -11,4 +11,4 @@ Work in progress
 - score
 - levels
 - multiple types of enemies
-- motherboard
+- "mystery ship"
