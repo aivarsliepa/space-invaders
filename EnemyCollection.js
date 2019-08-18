@@ -1,6 +1,6 @@
 class EnemyCollection {
   static xGap = 4;
-  static yGap = 4;
+  static yGap = 6;
   static rowCount = 5;
   static columnCount = 11;
   /**
@@ -12,7 +12,7 @@ class EnemyCollection {
     this.enemies = [];
 
     // TODO change based on turns/cycles (so that enemies can stay still for brief moments)
-    this.initialSpeed = 0.2;
+    this.initialSpeed = 0.5;
     this.speed = this.initialSpeed;
     this.moveRight = true;
     this.timesScreenCrossed = 0;

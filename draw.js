@@ -1,5 +1,14 @@
+let enemy1_1;
+let enemy1_2;
+
+function preload() {
+  enemy1_1 = loadImage("sprites/enemy1_1.png");
+  enemy1_2 = loadImage("sprites/enemy1_2.png");
+}
+
 function draw() {
-  background(55);
+  noStroke();
+  background(0);
   // const start = performance.now();
   game.update();
   // console.log(performance.now() - start);
@@ -8,6 +17,7 @@ function draw() {
   keyIsDownEvents();
 
   if (game.gameOver) {
+    fill("#a7db18");
     textSize(40);
     textAlign(CENTER);
     text("Game Over", width / 2, height / 2);
@@ -48,12 +58,23 @@ function drawEnemyCollection(collection) {
   collection.forEachEnemy(drawEnemy);
 }
 
+const enemyMap = new WeakMap();
+
 /**
  * @param {Enemy} enemy
  */
 function drawEnemy(enemy) {
-  fill("#a7db18");
-  rect(mapCoord(enemy.x), mapCoord(enemy.y), mapCoord(Enemy.width), mapCoord(Enemy.height));
+  if (!enemyMap.has(enemy)) {
+    enemyMap.set(enemy, true);
+  }
+
+  const imageToUse = enemyMap.get(enemy) ? enemy1_1 : enemy1_2;
+  image(imageToUse, mapCoord(enemy.x), mapCoord(enemy.y), mapCoord(Enemy.width), mapCoord(Enemy.height));
+
+  // TODO when movement of enemies are changed, determine it based on depending if enemy moved
+  if (random(1) < 0.1) {
+    enemyMap.set(enemy, !enemyMap.get(enemy));
+  }
 }
 
 function mapCoord(val) {

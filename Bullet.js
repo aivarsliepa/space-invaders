@@ -1,12 +1,12 @@
 class Bullet {
-  static width = 4;
-  static height = 8;
+  static width = 2;
+  static height = 6;
   constructor(isHostile, x, y, game) {
     this.game = game;
     this.isHostile = isHostile;
     this.x = x;
     this.y = y;
-    this.speed = Game.size / 90;
+    this.speed = Game.size / 25;
   }
 
   update() {

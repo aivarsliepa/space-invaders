@@ -9,7 +9,7 @@ class Player {
     this.game = game;
     this.x = Game.size / 2 - Player.width;
     this.y = Game.size - Player.height;
-    this.speed = Game.size / 100;
+    this.speed = Game.size / 40;
   }
 
   update() {
